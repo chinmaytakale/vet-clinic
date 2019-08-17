@@ -1,9 +1,9 @@
 package serenitylabs.tutorials.vetclinic.domain;
 
+import java.time.LocalDateTime;
+
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.time.LocalDateTime;
 
 public class WhenWeBookAnAppointment {
 

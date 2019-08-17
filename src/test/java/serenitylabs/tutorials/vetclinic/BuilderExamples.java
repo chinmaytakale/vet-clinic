@@ -1,13 +1,14 @@
 package serenitylabs.tutorials.vetclinic;
 
-import com.google.common.base.Splitter;
-import org.junit.Test;
-
-import java.util.List;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.junit.Assert.assertThat;
+
+import java.util.List;
+
+import org.junit.Test;
+
+import com.google.common.base.Splitter;
 
 public class BuilderExamples {
     @Test

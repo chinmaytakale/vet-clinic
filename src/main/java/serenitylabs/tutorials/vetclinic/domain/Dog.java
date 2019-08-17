@@ -1,15 +1,21 @@
 package serenitylabs.tutorials.vetclinic.domain;
 
+import java.time.LocalDateTime;
+
 public class Dog {
     private final String name;
     private final String breed;
     private final String colour;
+    private final String favoriteFood;
+    private final LocalDateTime birthday;
 
-    public Dog(String name, String breed, String colour) {
+    public Dog(String name, String breed, String favoriteFood, String colour, LocalDateTime birthday) {
 
         this.name = name;
         this.breed = breed;
         this.colour = colour;
+        this.favoriteFood = favoriteFood;
+        this.birthday = birthday;
     }
 
     public String getName() {
@@ -23,6 +29,17 @@ public class Dog {
     public String getColour() {
         return colour;
     }
+	public LocalDateTime getBirthday() {
+		return birthday;
+	}
+
+	public String getfavouriteFood() {
+		return favoriteFood;
+	}
+	@Override
+	public String toString(){
+		return (name+" the "+colour+" "+breed); 
+	}
 
     public static DogBuilder called(String name) {
         return new DogBuilder(name);
@@ -42,7 +59,9 @@ public class Dog {
         }
 
         public Dog andOfColour(String colour) {
-            return new Dog(name, breed, colour);
+            return new Dog(name, breed, colour,null,null);
         }
     }
+
+
 }

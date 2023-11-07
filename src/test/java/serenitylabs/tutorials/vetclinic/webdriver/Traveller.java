@@ -1,21 +1,25 @@
 package serenitylabs.tutorials.vetclinic.webdriver;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import java.text.DecimalFormat;
 
 public class Traveller {
     private final WebDriver driver;
+    TripPlannerForm tripPlannerForm;
 
     public Traveller(WebDriver driver) {
 
         this.driver = driver;
+        tripPlannerForm = new TripPlannerForm();
+        PageFactory.initElements(driver, tripPlannerForm);
     }
 
 
     public void planTrip() {
-        driver.findElement(TripPlannerForm.SUBMIT_BUTTON).click();
+    	tripPlannerForm.SUBMIT_BUTTON.click();
     }
 
     private static final DecimalFormat TIME_UNIT_FORMAT = new DecimalFormat("##");
@@ -26,23 +30,23 @@ public class Traveller {
                                 TravelDay travelDay) {
         driver.findElement(TripPlannerForm.departureButtonFor(departurePreference)).click();
 
-        new Select(driver.findElement(TripPlannerForm.TRAVEL_DAY))
+        new Select(tripPlannerForm.TRAVEL_DAY)
                 .selectByIndex(travelDay.getDaysInFuture());
 
-        Select hourList = new Select(driver.findElement(TripPlannerForm.TIME_HOUR));
+        Select hourList = new Select(tripPlannerForm.TIME_HOUR);
         hourList.selectByVisibleText(TIME_UNIT_FORMAT.format(hour));
 
-        Select minuteList = new Select(driver.findElement(TripPlannerForm.TIME_MINUTE));
+        Select minuteList = new Select(tripPlannerForm.TIME_MINUTE);
         minuteList.selectByVisibleText(TIME_UNIT_FORMAT.format(minute));
 
     }
 
     public void destinationStationIs(String station) {
-        driver.findElement(TripPlannerForm.DESTINATION).sendKeys(station);
+        tripPlannerForm.DESTINATION.sendKeys(station);
     }
 
     public void departureStationIs(String station) {
-        driver.findElement(TripPlannerForm.DEPARTURE).sendKeys(station);
+        tripPlannerForm.DEPARTURE.sendKeys(station);
     }
 
 
